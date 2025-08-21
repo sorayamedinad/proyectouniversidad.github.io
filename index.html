@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Tienda Online</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f6fa;
+      color: #2f3640;
+    }
+    header {
+      background: #273c75;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .producto {
+      background: white;
+      border: 1px solid #dcdde1;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+    }
+    .producto img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .producto button {
+      background: #44bd32;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .producto button:hover {
+      background: #4cd137;
+    }
+    #carrito {
+      background: #f1f2f6;
+      padding: 20px;
+    }
+    footer {
+      background: #2f3640;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>✨ SOBEIDA: Mi Tienda de Ropa y Lencería ✨</h1>
+    <p>Encuentra la mejor moda al mejor precio</p>
+  </header>
+
+  <!-- Catálogo de productos -->
+  <section class="productos">
+    <div class="producto">
+      <img src="https://via.placeholder.com/200" alt="Producto 1">
+      <h3>Conjunto de lencería roja</h3>
+      <p>Precio: $500.000</p>
+      <p>Tallas: S, M, L</p>
+      <p>Elegante y cómodo para toda ocasión.</p>
+      <button onclick="agregarAlCarrito('Conjunto lencería roja', 50000)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://via.placeholder.com/200" alt="Producto 2">
+      <h3>Blusa blanca casual</h3>
+      <p>Precio: $350.000</p>
+      <p>Tallas: S, M, L, XL</p>
+      <p>Perfecta para uso diario, fresca y ligera.</p>
+      <button onclick="agregarAlCarrito('Blusa blanca casual', 35000)">Agregar al carrito</button>
+    </div>
+
+    <div class="producto">
+      <img src="https://via.placeholder.com/200" alt="Producto 3">
+      <h3>Pantalón de mezclilla</h3>
+      <p>Precio: $800.000</p>
+      <p>Tallas: 6, 8, 10, 12</p>
+      <p>Jeans de alta calidad y estilo moderno.</p>
+      <button onclick="agregarAlCarrito('Pantalón de mezclilla', 80000)">Agregar al carrito</button>
+    </div>
+  </section>
+
+  <!-- Carrito de compras -->
+  <section id="carrito">
+    <h2>🛒 Carrito de Compras</h2>
+    <ul id="lista-carrito"></ul>
+    <h3 id="total">Total: $0</h3>
+    <p><strong>Formas de pago:</strong> Transferencia bancaria, Nequi, Tarjeta de crédito</p>
+    <p>📩 Contacto: <a href="mailto:sobeidamedina@sobeidaltda.com">mitienda@ejemplo.com</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Mi Tienda de Ropa y Lencería - Creada con GitHub Pages</p>
+  </footer>
+
+  <script>
+    let carrito = [];
+    function agregarAlCarrito(nombre, precio) {
+      carrito.push({nombre, precio});
+      mostrarCarrito();
+    }
+    function mostrarCarrito() {
+      const lista = document.getElementById('lista-carrito');
+      lista.innerHTML = '';
+      let total = 0;
+      carrito.forEach(item => {
+        let li = document.createElement('li');
+        li.textContent = `${item.nombre} - $${item.precio}`;
+        lista.appendChild(li);
+        total += item.precio;
+      });
+      document.getElementById('total').textContent = "Total: $" + total;
+    }
+  </script>
+
+</body>
+</html>
+
